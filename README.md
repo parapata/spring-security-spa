@@ -1,6 +1,5 @@
-# Spring-Security + React
+# spring-security-react
 Spring-Security + Reactサンプルプログラム
 
-
-##ログイン情報
+## ログイン情報
 user/user
