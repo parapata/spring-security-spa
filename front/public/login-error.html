@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title th:text="${@environment.getProperty('spring.application.name')}">title</title>
+</head>
+<body>
+    <div class="Aligner">
+    	<div>ログインエラー</div>
+        <div>
+        	<a class="btn btn-primary" th:href="@{/login}">戻る</a>
+        </div>
+    </div>
+</body>
+</html>
