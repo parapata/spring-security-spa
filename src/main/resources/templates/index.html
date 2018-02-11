@@ -5,17 +5,14 @@
 <title th:text="${@environment.getProperty('spring.application.name')}">title</title>
 </head>
 <body>
+    <!--
     <div id="header">
         <form th:action="@{/logout}" method="POST" id="logoutForm">
             <button type="submit">Logout</button>
         </form>
     </div>
-    <div id="container">
-        <div id="main">
-        	<a>Home</a>
-        </div>
-    </div>
-    <div id="footer"></div>
+    -->
+    <div id="container"/>
     <script src="./js/bundle.js" th:src="@{/js/bundle.js}"></script>
 </body>
 </html>

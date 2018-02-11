@@ -7,13 +7,13 @@
 <body>
     <div class="Aligner">
         <div class="Aligner-item Aligner-item--fixed">
-            <form id="loginForm" method="post" th:action="@{/login/auth}">
+            <form id="loginForm" method="post" th:action="@{/login/auth}" autocomplete="off">
                 <div class="form-group">
-                    <label for="userid">ユーザID</label>
+                    <label for="userid">User</label>
                     <input id="userid" name="userid" type="text"/>
                 </div>
                 <div class="form-group">
-                    <label for="password">パスワード</label>
+                    <label for="password">Password</label>
                     <input id="password" name="password" type="password"/>
                 </div>
                 <div class="form-group">
