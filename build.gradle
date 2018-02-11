@@ -19,7 +19,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'war'
 
 group = 'com.example'
-version = '1.0.0'
+version = '1.0.1'
 sourceCompatibility = 1.8
 
 repositories {
@@ -35,7 +35,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('io.springfox:springfox-swagger2:2.8.0')
 	compile('io.springfox:springfox-swagger-ui:2.8.0')
+	compile('org.springframework.data:spring-data-jdbc:1.0.0.BUILD-SNAPSHOT')
 	runtime('org.springframework.boot:spring-boot-devtools')
+	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
 }

@@ -10,11 +10,11 @@
             <form id="loginForm" method="post" th:action="@{/login/auth}">
                 <div class="form-group">
                     <label for="userid">ユーザID</label>
-                    <input id="userid" name="userid" type="text" />
+                    <input id="userid" name="userid" type="text"/>
                 </div>
                 <div class="form-group">
                     <label for="password">パスワード</label>
-                    <input id="password" name="password" type="password" />
+                    <input id="password" name="password" type="password"/>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Login</button>
@@ -23,5 +23,11 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById("userid").value = "user";
+            document.getElementById("password").value = "user";
+        }
+    </script>
 </body>
 </html>

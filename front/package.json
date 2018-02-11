@@ -1,6 +1,6 @@
 {
   "name": "fornt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,10 +13,11 @@
     "back-copy:static": "cpx ./public/**/{*.css,*.js} ../src/main/resources/static"
   },
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
   },
   "devDependencies": {
+    "axios": "^0.17.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
@@ -26,7 +27,6 @@
     "cpx": "^1.5.0",
     "npm-run-all": "^4.1.1",
     "rimraf": "^2.6.2",
-    "webpack": "^3.6.0",
-    "yarn": "^1.1.0"
+    "webpack": "^3.6.0"
   }
 }
