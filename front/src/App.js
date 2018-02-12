@@ -51,7 +51,7 @@ export default class App extends Component {
                     <form action="/logout" method="POST" autoComplete="off">
                         <input type="hidden" name="_csrf" value={this.state.token} />
                         <button type="submit">Logout</button>
-\                    </form>
+                    </form>
                     <div>user : {this.state.user.username}</div>
                 </header>
                 <div>
