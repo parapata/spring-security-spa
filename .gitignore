@@ -27,4 +27,5 @@ nbdist/
 
 bin/
 bin/**/*
+/target/
 /doc/
