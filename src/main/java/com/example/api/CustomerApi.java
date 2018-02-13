@@ -30,8 +30,8 @@ public class CustomerApi {
     CustomerService customerService;
 
     @GetMapping
-    Page<Customer> getCustomers(@PageableDefault Pageable pageable /* (1) */) {
-        Page<Customer> customers = customerService.findAll(pageable); // (2)
+    Page<Customer> getCustomers(@PageableDefault Pageable pageable) {
+        Page<Customer> customers = customerService.findAll(pageable);
         return customers;
     }
 

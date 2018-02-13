@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import axios from 'axios';
+import Footer from '../components/commons/Footer';
 
 const CTKN_KEY_NAME = "_ctkn";
 
 const getCsrfToken = (cokie) => {
     let ret;
-    if(document.cookie){
+    if (document.cookie) {
         document.cookie.split(";").forEach(value => {
             let array = value.trim().split("=");
             if (CTKN_KEY_NAME === array[0]) {
@@ -16,7 +17,7 @@ const getCsrfToken = (cokie) => {
     return ret;
 };
 
-export default class App extends Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -33,7 +34,7 @@ export default class App extends Component {
             //console.log(response)
         });
         let token = getCsrfToken(document.cookie);
-        if(token) {
+        if (token) {
             this.state.token = token;
         }
     }
@@ -49,7 +50,7 @@ export default class App extends Component {
             <div>
                 <header>
                     <form action="/logout" method="POST" autoComplete="off">
-                        <input type="hidden" name="_csrf" value={this.state.token} />
+                        <input type="hidden" name="_csrf" value={this.state.token}/>
                         <button type="submit">Logout</button>
                     </form>
                     <div>user : {this.state.user.username}</div>
@@ -62,7 +63,7 @@ export default class App extends Component {
                     </form>
                 </div>
                 <DetailsView ref="details"/>
-                <footer></footer>
+                <Footer/>
             </div>
         );
     }
@@ -111,3 +112,4 @@ class DetailsView extends Component {
     }
 }
 
+export default App;
