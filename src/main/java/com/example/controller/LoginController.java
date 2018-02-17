@@ -1,20 +1,22 @@
 package com.example.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/login")
 public class LoginController {
 
-    @GetMapping
-    public String index() {
+    @GetMapping(path = "/login")
+    public String index(Model model) {
+        model.addAttribute(new LoginForm());
         return "login";
     }
 
-    @GetMapping(path = "/error")
-    public String error() {
-        return "login-error";
+    @GetMapping(path = "/login-error")
+    public String error(Model model) {
+        model.addAttribute("loginError", true);
+        // return "login-error";
+        return "login";
     }
 }

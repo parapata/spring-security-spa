@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.config.jdbc;
 
 import org.springframework.data.jdbc.mapping.model.DefaultNamingStrategy;
 import org.springframework.data.jdbc.mapping.model.JdbcPersistentProperty;

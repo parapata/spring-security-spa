@@ -53,7 +53,7 @@ class App extends Component {
                         <input type="hidden" name="_csrf" value={this.state.token}/>
                         <button type="submit">Logout</button>
                     </form>
-                    <div>user : {this.state.user.username}</div>
+                    <div>user : {this.state.user.userId}</div>
                 </header>
                 <div>
                     <form onSubmit={this.handleSubmit.bind(this)} autoComplete="off">

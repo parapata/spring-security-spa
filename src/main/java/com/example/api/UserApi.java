@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.domain.User;
+import com.example.domain.Users;
 
 @RestController
 @RequestMapping("api/users")
 public class UserApi {
 
     @GetMapping
-    User getUser(Principal principal) {
+    public Users getUser(Principal principal) {
         Authentication auth = (Authentication) principal;
         UserDetails user = (UserDetails) auth.getPrincipal();
-        return new User(user.getUsername());
+        return new Users(user.getUsername(), user.getPassword(), null, null, null);
     }
 }

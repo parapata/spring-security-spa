@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8"></meta>
-<title th:text="${@environment.getProperty('spring.application.name')}">title</title>
+    <meta charset="UTF-8"></meta>
+    <title th:text="${@environment.getProperty('spring.application.name')}">title</title>
 </head>
 <body>
-    <!--
-    <div id="header">
-        <form th:action="@{/logout}" method="POST" id="logoutForm">
-            <button type="submit">Logout</button>
-        </form>
-    </div>
-    -->
-    <div id="container"></div>
-    <script src="./js/bundle.js" th:src="@{/js/bundle.js}"></script>
+<!--
+<div id="header">
+    <form th:action="@{/logout}" method="POST" id="logoutForm">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+-->
+<div id="container"></div>
+<script src="./js/bundle.js" th:src="@{/js/bundle.js}"></script>
 </body>
 </html>

@@ -6,7 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,9 +21,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
+import com.example.config.auth.AuthenticationProviderImpl;
+import com.example.config.auth.UserDetailsServiceImpl;
+
 @Configuration
 @EnableWebSecurity
+@ComponentScan("com.example.config.auth")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
+
+    @Autowired
+    private AuthenticationProviderImpl authenticationProvider;
 
     public SecurityConfig() {
     }
@@ -41,6 +53,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user")
                 .password("$2a$10$EQzbsy3Pfmvs/9Ox2cGNseD8PCeN.q.EwKJ5e.47yhCmOtfL/rVHO")
                 .roles("USER");
+
+        // 独自認証クラスを設定する
+        auth.authenticationProvider(authenticationProvider)
+                .userDetailsService(userDetailsService);
     }
 
     @Override
@@ -56,15 +72,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .loginProcessingUrl("/login/auth")
                 .successHandler(getSuccessHandler())
-                .failureUrl("/login/error")
+                .failureUrl("/login-error")
                 .permitAll();
 
         http.logout()
                 .logoutUrl("/logout")
                 .permitAll()
                 .logoutSuccessUrl("/login")
-                .deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true);
+                .deleteCookies("JSESSIONID", "_ctkn")
+                .invalidateHttpSession(true)
+                .permitAll();
 
         http.rememberMe()
                 .rememberMeCookieName("_remember")

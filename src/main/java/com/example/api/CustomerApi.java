@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.example.domain.Customer;
+import com.example.domain.Customers;
 import com.example.service.CustomerService;
 
 @RestController
@@ -27,37 +27,37 @@ import com.example.service.CustomerService;
 public class CustomerApi {
 
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @GetMapping
-    Page<Customer> getCustomers(@PageableDefault Pageable pageable) {
-        Page<Customer> customers = customerService.findAll(pageable);
+    public Page<Customers> getCustomers(@PageableDefault Pageable pageable) {
+        Page<Customers> customers = customerService.findAll(pageable);
         return customers;
     }
 
     @GetMapping(path = "{id}")
-    Customer getCustomer(@PathVariable Integer id) {
-        Customer customer = customerService.findById(id);
+    public Customers getCustomer(@PathVariable Integer id) {
+        Customers customer = customerService.findById(id);
         return customer;
     }
 
     @PostMapping
-    ResponseEntity<Customer> postCustomers(@RequestBody Customer customer, UriComponentsBuilder uriBuilder) {
-        Customer created = customerService.create(customer);
+    public ResponseEntity<Customers> postCustomers(@RequestBody Customers customer, UriComponentsBuilder uriBuilder) {
+        Customers created = customerService.create(customer);
         URI location = uriBuilder.path("api/customers/{id}")
                 .buildAndExpand(created.getId()).toUri();
         return ResponseEntity.created(location).body(created);
     }
 
     @PutMapping(path = "{id}")
-    Customer putCustomer(@PathVariable Integer id, @RequestBody Customer customer) {
+    public Customers putCustomer(@PathVariable Integer id, @RequestBody Customers customer) {
         customer.setId(id);
         return customerService.update(customer);
     }
 
     @DeleteMapping(value = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void deleteCustomer(@PathVariable Integer id) {
+    public void deleteCustomer(@PathVariable Integer id) {
         customerService.delete(id);
     }
 }

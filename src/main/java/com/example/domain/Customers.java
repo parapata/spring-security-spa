@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Customer implements Serializable {
+public class Customers implements Serializable {
 
     @Id
     private Integer id;

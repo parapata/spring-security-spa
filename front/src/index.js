@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./containers/App";
 
-ReactDOM.hydrate(
+ReactDOM.render(
     <App />,
     document.getElementById("container")
 );

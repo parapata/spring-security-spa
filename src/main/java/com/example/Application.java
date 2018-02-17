@@ -14,7 +14,7 @@ import org.springframework.data.jdbc.mapping.model.NamingStrategy;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
-import com.example.config.CustomNamingStrategy;
+import com.example.config.jdbc.CustomNamingStrategy;
 
 @SpringBootApplication
 @EnableJdbcRepositories

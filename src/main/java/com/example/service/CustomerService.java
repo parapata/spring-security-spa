@@ -11,38 +11,38 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.domain.Customer;
-import com.example.repository.CustomerRepository;
+import com.example.domain.Customers;
+import com.example.repository.CustomersRepository;
 
 @Service
 @Transactional
 public class CustomerService {
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private CustomersRepository customersRepository;
 
-    public Page<Customer> findAll(Pageable pageable) {
-        List<Customer> list = new ArrayList<>();
-        customerRepository.findAll().forEach(item -> {
+    public Page<Customers> findAll(Pageable pageable) {
+        List<Customers> list = new ArrayList<>();
+        customersRepository.findAll().forEach(item -> {
             list.add(item);
         });
         return new PageImpl<>(list);
     }
 
-    public Customer findById(Integer id) {
-        Optional<Customer> res = customerRepository.findById(id);
+    public Customers findById(Integer id) {
+        Optional<Customers> res = customersRepository.findById(id);
         return res.isPresent() ? res.get() : null;
     }
 
-    public Customer create(Customer customer) {
-        return customerRepository.save(customer);
+    public Customers create(Customers customer) {
+        return customersRepository.save(customer);
     }
 
-    public Customer update(Customer customer) {
-        return customerRepository.save(customer);
+    public Customers update(Customers customer) {
+        return customersRepository.save(customer);
     }
 
     public void delete(Integer id) {
-        customerRepository.deleteById(id);
+        customersRepository.deleteById(id);
     }
 }
