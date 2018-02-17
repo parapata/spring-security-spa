@@ -151,7 +151,9 @@ public class StringUtil {
         StringBuilder sb = new StringBuilder();
         for (char c : str.toCharArray()) {
             if (c >= 'A' && c <= 'Z') {
-                sb.append("_");
+                if (0 < sb.length()) {
+                    sb.append("_");
+                }
                 sb.append(Character.toLowerCase(c));
             } else {
                 sb.append(c);

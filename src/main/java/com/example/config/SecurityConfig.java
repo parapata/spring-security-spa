@@ -49,12 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("$2a$10$EQzbsy3Pfmvs/9Ox2cGNseD8PCeN.q.EwKJ5e.47yhCmOtfL/rVHO")
-                .roles("USER");
+// auth.inMemoryAuthentication()
+// .withUser("user")
+// .password("$2a$10$EQzbsy3Pfmvs/9Ox2cGNseD8PCeN.q.EwKJ5e.47yhCmOtfL/rVHO")
+// .roles("USER");
 
-        // 独自認証クラスを設定する
         auth.authenticationProvider(authenticationProvider)
                 .userDetailsService(userDetailsService);
     }
@@ -68,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin()
                 .loginPage("/login")
-                .usernameParameter("userid")
+                .usernameParameter("userId")
                 .passwordParameter("password")
                 .loginProcessingUrl("/login/auth")
                 .successHandler(getSuccessHandler())

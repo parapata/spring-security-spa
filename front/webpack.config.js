@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const OUTPUT_PATH = './public'
+//const OUTPUT_PATH = './public';
+const OUTPUT_PATH = '../src/main/resources/static/js';
 
 module.exports = {
     entry: [
@@ -8,7 +9,7 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, OUTPUT_PATH),
-        filename: 'js/bundle.js',
+        filename: 'bundle.js',
     },
     module: {
         rules: [

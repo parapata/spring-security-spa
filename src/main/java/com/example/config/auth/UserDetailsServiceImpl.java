@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Optional<Users> user = usersRepository.findById(account);
 
         if (!user.isPresent()) {
-            throw new UsernameNotFoundException("ログイン情報が存在しません。");
+            throw new UsernameNotFoundException("user not found");
         }
         return createUser(user.get());
     }

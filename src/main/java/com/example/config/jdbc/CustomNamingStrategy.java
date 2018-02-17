@@ -10,11 +10,12 @@ public class CustomNamingStrategy extends DefaultNamingStrategy {
     @Override
     public String getColumnName(JdbcPersistentProperty property) {
         String propertyName = property.getName();
-        return StringUtil.snakelize(propertyName);
+        return StringUtil.snakelize(propertyName).toLowerCase();
     }
 
     @Override
     public String getTableName(Class<?> type) {
-        return super.getTableName(type).toLowerCase();
+        String tableName = super.getTableName(type);
+        return StringUtil.snakelize(tableName).toLowerCase();
     }
 }

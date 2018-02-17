@@ -31,16 +31,16 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
         String password = authentication.getCredentials().toString();
 
         if (StringUtil.isEmpty(userId) || StringUtil.isEmpty(password)) {
-            throw new AuthenticationCredentialsNotFoundException("ログイン情報に不備があります。");
+            throw new AuthenticationCredentialsNotFoundException("user and password is required");
         }
 
         Optional<Users> user = usersRepository.findById(userId);
         if (!user.isPresent()) {
-            throw new AuthenticationCredentialsNotFoundException("ログイン情報が存在しません。");
+            throw new AuthenticationCredentialsNotFoundException("user not found");
         }
         Users users = user.get();
         if (!StringUtil.equals(passwordEncoder.encode(password), users.getPassword())) {
-            throw new AuthenticationCredentialsNotFoundException("パスワードが不正です。");
+            throw new AuthenticationCredentialsNotFoundException("password unmatched");
         }
 
         return new UsernamePasswordAuthenticationToken(

@@ -5,12 +5,8 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf ./public/js/*",
-    "back-clean": "rimraf ../src/main/resources/static/* ../src/main/resources/templates/*",
-    "build": "npm run clean && webpack -p --progress",
-    "back-copy": "npm-run-all build back-clean back-copy:template back-copy:static",
-    "back-copy:template": "cpx ./public/*.html ../src/main/resources/templates",
-    "back-copy:static": "cpx ./public/**/{*.css,*.js} ../src/main/resources/static"
+    "clean": "rimraf ../src/main/resources/static/js/bundle.js",
+    "build": "npm run clean && webpack -p --progress"
   },
   "dependencies": {
     "react": "16.2.0",
