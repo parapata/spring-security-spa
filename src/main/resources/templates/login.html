@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"></meta>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title th:text="${@environment.getProperty('spring.application.name')}">title</title>
 </head>
 <body>
 <div>
     <form id="loginForm" method="post" th:action="@{/login/auth}" th:object="${loginForm}" autocomplete="off">
         <div class="form-group">
-            <label for="userId">User:</label>
+            <label for="userId" th:text="#{label.userId}">User:</label>
             <input id="userId" name="userId" th:field="*{userId}" type="text"/>
         </div>
         <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="password" th:text="#{label.password}">Password:</label>
             <input id="password" name="password" th:field="*{password}" type="password"/>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary" type="submit">Login</button>
+            <button class="btn btn-primary" type="submit" th:text="#{btn.login}">Login</button>
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <input type="password" name="dummyPassword" style="visibility: hidden"/>
         </div>
     </form>
-    <p th:if="${loginError}">Login error!!</p>
+    <p th:if="${loginError}" th:text="#{err_001}">Login error!!</p>
 </div>
 </body>
 </html>

@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthenticationProviderImpl authenticationProvider;
 
     public SecurityConfig() {
+        super();
     }
 
     public SecurityConfig(boolean disableDefaults) {
@@ -44,15 +45,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/js/**", "/css/**", "/img/**");
+        web.ignoring().antMatchers("/js/**", "/css/**", "/img/**", "/h2-console/**");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-// auth.inMemoryAuthentication()
-// .withUser("user")
-// .password("$2a$10$EQzbsy3Pfmvs/9Ox2cGNseD8PCeN.q.EwKJ5e.47yhCmOtfL/rVHO")
-// .roles("USER");
+        auth.inMemoryAuthentication()
+                .withUser("guest")
+                .password(passwordEncoder().encode("guest"))
+                .roles("GUEST");
 
         auth.authenticationProvider(authenticationProvider)
                 .userDetailsService(userDetailsService);
